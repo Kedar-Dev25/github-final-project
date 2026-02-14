@@ -4,7 +4,14 @@ import com.smartclinic.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
-    // yahan custom query methods bhi add kar sakte ho agar chahiye
+
+    // Retrieve patient by email
+    Optional<Patient> findByEmail(String email);
+
+    // Retrieve patient by email or phone
+    Optional<Patient> findByEmailOrPhone(String email, String phone);
 }
